@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
 *,
 *::before,
 *::after {
@@ -9,8 +11,44 @@ body {
     height: 100%;
     padding: 0;
     margin: 0;
-    font-size: 2em;
-    background: blue;
+    font-size: 2rem;
+    background: url("./background/morocco.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Courgette', cursive;
+}
+
+#quote-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 4rem auto;
+    padding: 2rem;
+    width: 70%;
+    height: 32rem;
+    background-color: rgba(195, 221, 245, 0.459);
+    border-radius: 4px;
+    text-align: center;
+}
+
+#author {
+    font-size: 1.5rem;
+}
+
+#new-quote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 2.3rem;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    background-color: rgba(155, 253, 221, 0.692);
+    cursor: pointer;
+}
+
+#tweet-quote {
+    margin: auto auto 2rem auto;
+    font-size: 3rem;
 }

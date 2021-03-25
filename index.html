@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quote Machine</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div id="greetings">Hello World!</div>
+    <div id="quote-box">
+        <p id="text">
+            “The Best Way To Get Started Is To Quit Talking And Begin Doing.” 
+        </p>
+        <p id="author">
+            Walt Disney
+        </p>
+        <button id="new-quote">Next</button>
+        <a id="tweet-quote" href="twitter.com/intent/tweet" target="_blank"><i class="fa fa-twitter"></i></a>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#greetings').fadeIn("slow").css('color', 'white');
         })
     </script>
 </body>
