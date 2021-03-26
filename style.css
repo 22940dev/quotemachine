@@ -30,6 +30,26 @@ body {
     background-color: rgba(195, 221, 245, 0.459);
     border-radius: 4px;
     text-align: center;
+    overflow: scroll;
+}
+
+#quote-box::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+#quote-box::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background: rgba(195, 221, 245, 0.559);        /* color of the tracking area */
+}
+
+#quote-box::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 253, 221, 0.692);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid rgba(195, 221, 245, 0.559);  /* creates padding around scroll thumb */
+}
+
+#text {
+    margin-top: 12%;
 }
 
 #author {
@@ -37,6 +57,7 @@ body {
 }
 
 #new-quote {
+    margin-bottom: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
