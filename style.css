@@ -11,8 +11,8 @@ body {
     max-height: 100%;
     padding: 0;
     margin: 0;
-    font-size: 2rem;
-    background: url("./background/balloons.jpeg");
+    font-size: 3rem;
+    background: url("./background/0.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Courgette', cursive;
@@ -33,6 +33,7 @@ i {
     height: 32rem;
     border-radius: 4px;
     text-align: center;
+    text-shadow: 0 0 5px white;
 }
 
 #quote-box::-webkit-scrollbar {
@@ -55,7 +56,7 @@ i {
 }
 
 #author {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 /* new quote button */
@@ -72,14 +73,15 @@ i {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 10rem;
+    width: 12rem;
     height: 3rem;
-    padding: 1rem;
+    padding: 1.5rem;
     font-size: 1.2rem;
     border-radius: 4px;
     border: 2px ridge rgba(13, 13, 77, 0.897);
     background-color: rgba(155, 253, 220, 0.849);
     cursor: pointer;
+    outline: none;
     grid-area: button;
 }
 
@@ -96,14 +98,14 @@ i {
 }
 
 .tweet-quote {
-    font-size: 3rem;
     padding: 0;
     cursor: pointer;
+    font-size: 4rem;
+    text-shadow: 0 0 5px white;
 }
 
 #i-twitter {
     color: rgba(29,161,242,1.00);
-    font-size: 3.3rem;
 }
 
 #i-facebook {
