@@ -33,7 +33,7 @@ i {
     height: 32rem;
     border-radius: 4px;
     text-align: center;
-    text-shadow: 0 0 5px white;
+    text-shadow: 0 0 9px white;
 }
 
 #quote-box::-webkit-scrollbar {
@@ -101,7 +101,7 @@ i {
     padding: 0;
     cursor: pointer;
     font-size: 4rem;
-    text-shadow: 0 0 5px white;
+    text-shadow: 0 0 15px white;
 }
 
 #i-twitter {
