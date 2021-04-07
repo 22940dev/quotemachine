@@ -9,12 +9,8 @@
 </head>
 <body>
     <div id="quote-box">
-        <p id="text">
-            “The Best Way To Get Started Is To Quit Talking And Begin Doing.” 
-        </p>
-        <p id="author">
-            Walt Disney
-        </p>
+        <p id="text"></p>
+        <p id="author"></p>
 
         <div id="button-and-social-wrapper">
             <button id="new-quote">Next quote</button>
@@ -41,7 +37,61 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        function changeBackground() {
+        // get quotes from API 
+
+        var quotesData;
+        var quote = '';
+        var author = '';
+
+        function getQuotes() {
+            return $.ajax({
+                headers: {
+                    Accept: 'application/json'
+                },
+                url: 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json',
+                success: function (jsonQuotes) {
+                    if (typeof jsonQuotes === 'string') {
+                        quotesData = JSON.parse(jsonQuotes);
+                    }
+                }
+            });
+        }
+
+        // get a random quote
+
+        function getRandomQuote() {
+            return quotesData.quotes[
+                Math.floor(Math.random() * quotesData.quotes.length)
+            ];
+        }
+
+        function getQuote() {
+            var randomQuote = getRandomQuote();
+
+            quote = randomQuote.quote;
+            author = randomQuote.author;
+
+            $('#tweet-quote').attr(
+                'href',
+                'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' +
+                encodeURIComponent('"' + quote + '" ' + author)
+            );
+
+            $('#text').animate({ opacity: 0 }, 0, function () {
+                $(this).animate({ opacity: 1 }, 400);
+                $('#text').text(randomQuote.quote);
+            });
+
+            $('#author').animate({ opacity: 0 }, 0, function () {
+                $(this).animate({ opacity: 1 }, 350);
+                $('#author').text(randomQuote.author);
+            });
+        }
+
+        // change background and quote when next quote is clicked
+
+        function next() {
+
             let backgroundNumber = getRandomBackgroundNumber();
 
             function getRandomBackgroundNumber() {
@@ -49,14 +99,21 @@
             }
 
             $('#new-quote').click(function() {
-                $('body').css('background-image', `url("./background/${backgroundNumber}.jpeg")`);
-                console.log('clicked');
+                $('body').css('background-image', `url("./background/${backgroundNumber}.jpeg")`);                  
             })
         };
 
+        // life cycle
+
         $(document).ready(function() {
-            changeBackground();
-            $('#new-quote').on('click', changeBackground);
+            getQuotes().then(() => {
+                getQuote();
+            });
+
+            next();
+            
+            $('#new-quote').on('click', next);
+            $('#new-quote').on('click', getQuote);
         });
     </script>
 </body>
