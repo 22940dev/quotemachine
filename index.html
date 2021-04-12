@@ -9,8 +9,10 @@
 </head>
 <body>
     <div id="quote-box">
-        <p id="text"></p>
-        <p id="author"></p>
+        <div id="text-box">
+            <p id="text"></p>
+            <p id="author"></p>
+        </div>
 
         <div id="button-and-social-wrapper">
             <button id="new-quote">Next quote</button>
@@ -99,8 +101,25 @@
             }
 
             $('#new-quote').click(function() {
-                $('body').css('background-image', `url("./background/${backgroundNumber}.jpeg")`);                  
+                $('body').css('background-image', `url("./background/${backgroundNumber}.jpeg")`);
+                decreaseFont();                 
             })
+        };
+
+        // decrease font size if the text is long
+
+        function decreaseFont() {
+            $("#text-box").each(function() {
+                var el= $(this);
+                var textLength = el.html().length;
+                    if (textLength > 300) {
+                        el.css("font-size", "1.3rem");
+                    } else if (textLength > 200) {
+                        el.css("font-size", "1.8rem");
+                    } else if (textLength > 100) {
+                        el.css("font-size", "2.2rem");
+                    }
+            });
         };
 
         // life cycle
@@ -108,12 +127,13 @@
         $(document).ready(function() {
             getQuotes().then(() => {
                 getQuote();
+                decreaseFont();
             });
 
             next();
-            
-            $('#new-quote').on('click', next);
+
             $('#new-quote').on('click', getQuote);
+            $('#new-quote').on('click', next);
         });
     </script>
 </body>

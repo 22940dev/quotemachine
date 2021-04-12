@@ -11,7 +11,7 @@ body {
     max-height: 100%;
     padding: 0;
     margin: 0;
-    font-size: 3rem;
+    font-size: 2.5rem;
     background: url("./background/0.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -25,30 +25,22 @@ i {
 #quote-box {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     margin: 1rem auto;
     padding: 3rem;
     width: 70%;
-    height: 32rem;
+    height: 50%;
     border-radius: 4px;
     text-align: center;
     text-shadow: 0 0 9px white;
 }
 
-#quote-box::-webkit-scrollbar {
-    width: 12px;               /* width of the entire scrollbar */
-  }
-  
-#quote-box::-webkit-scrollbar-track {
-    border-radius: 4px;
-    background: rgba(195, 221, 245, 0.559);        /* color of the tracking area */
-}
-
-#quote-box::-webkit-scrollbar-thumb {
-    background-color: rgba(155, 253, 221, 0.692);    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid rgba(195, 221, 245, 0.559);  /* creates padding around scroll thumb */
+#text-box {
+    height: 24rem;
+    max-height: 24rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #text {
@@ -62,6 +54,7 @@ i {
 /* new quote button */
 
 #button-and-social-wrapper {
+    margin-bottom: 0.5rem;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-areas: 
