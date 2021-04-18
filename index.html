@@ -8,31 +8,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div id="quote-box">
-        <div id="text-box">
-            <p id="text"></p>
-            <p id="author"></p>
-        </div>
+    <div id="main">
+        <div id="quote-box">
+            <div id="text-box">
+                <p id="text"></p>
+                <p id="author"></p>
+            </div>
 
-        <div id="button-and-social-wrapper">
-            <button id="new-quote">Next quote</button>
-    
-            <div id="social-wrapper"
-                <a 
-                    title="Tweet the quote"
-                    class="tweet-quote"
-                    href="twitter.com/intent/tweet" 
-                    target="_blank"
-                >
-                    <i id="i-twitter" class="fa fa-twitter"></i>
-                </a>
-                <a
-                    title="Share on Facebook"
-                    class="tweet-quote"
-                    target="_blank"
-                >
-                    <i id="i-facebook" class="fa fa-facebook"></i>
-                </a>
+            <div id="button-and-social-wrapper">
+                <button id="new-quote">Next quote</button>
+        
+                <div id="social-wrapper">
+                    <a 
+                        title="Tweet the quote"
+                        id="tweet-quote"
+                        class="share-quote"
+                        target="_blank"
+                    >
+                        <i id="i-twitter" class="fa fa-twitter"></i>
+                    </a>
+                    <a
+                        title="Share on Facebook"
+                        id="facebook-quote"
+                        class="share-quote"
+                        target="_blank"
+                    >
+                        <i id="i-facebook" class="fa fa-facebook"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -73,21 +76,32 @@
             quote = randomQuote.quote;
             author = randomQuote.author;
 
+            // share on social medias
+
             $('#tweet-quote').attr(
                 'href',
-                'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' +
-                encodeURIComponent('"' + quote + '" ' + author)
+                "https://twitter.com/intent/tweet?text=" +
+                encodeURIComponent('"' + quote + '" ' + "\n\n" + author + "\n\n" + 'shared from QuoteMachine')
+            );
+
+            // !!!!!!!!!!!!!!!!!!!!!! DON'T Forget to change url when the website get deployed!!!!!!!!!!!!!!!!
+
+            $('#facebook-quote').attr(
+                'href',
+                `https://www.facebook.com/dialog/feed?app_id=140586622674265&link=https%3A%2F%2Fcodepen.io%2FfreeCodeCamp%2Fpen%2FqRZeGZ&name=${quote}&redirect_uri=http%3A%2F%2Fs7.addthis.com%2Fstatic%2Fpostshare%2Fc00.html`
             );
 
             $('#text').animate({ opacity: 0 }, 0, function () {
-                $(this).animate({ opacity: 1 }, 400);
+                $(this).animate({ opacity: 1 }, 100);
                 $('#text').text(randomQuote.quote);
             });
 
             $('#author').animate({ opacity: 0 }, 0, function () {
-                $(this).animate({ opacity: 1 }, 350);
+                $(this).animate({ opacity: 1 }, 150);
                 $('#author').text(randomQuote.author);
             });
+
+            $('#new-quote').removeAttr("disabled");
         }
 
         // change background and quote when next quote is clicked
@@ -121,6 +135,12 @@
                     }
             });
         };
+
+        // disable button while it is waiting for the next quote
+
+        $('#new-quote').on('click',function(){
+            $('#new-quote').attr("disabled","disabled");
+        });
 
         // life cycle
 
