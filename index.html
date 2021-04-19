@@ -72,32 +72,30 @@
         function getQuote() {
             var randomQuote = getRandomQuote();
 
-            quote = randomQuote.text;
-            author = randomQuote.author;
+            quote = '" ' + randomQuote.text + ' "';
+            author = (randomQuote.author !== null) ? randomQuote.author : "Unknown";
 
             // share on social medias
 
             $('#tweet-quote').attr(
                 'href',
                 "https://twitter.com/intent/tweet?text=" +
-                encodeURIComponent('"' + quote + '" ' + "\n\n" + author + "\n\n" + 'shared from QuoteMachine')
+                encodeURIComponent(quote + "\n\n" + author + "\n\n" + 'shared from https://v-quote-machine.netlify.app')
             );
-
-            // !!!!!!!!!!!!!!!!!!!!!! DON'T Forget to change url when the website get deployed!!!!!!!!!!!!!!!!
 
             $('#facebook-quote').attr(
                 'href',
-                `https://www.facebook.com/dialog/feed?app_id=140586622674265&link=https%3A%2F%2Fcodepen.io%2FfreeCodeCamp%2Fpen%2FqRZeGZ&name=${quote}&redirect_uri=http%3A%2F%2Fs7.addthis.com%2Fstatic%2Fpostshare%2Fc00.html`
+                `https://www.facebook.com/dialog/feed?app_id=140586622674265&link=https%3A%2F%2Fv-quote-machine.netlify.app%2F&quote=${quote}%0D%0A${author}&redirect_uri=http%3A%2F%2Fs7.addthis.com%2Fstatic%2Fpostshare%2Fc00.html`
             );
 
             $('#text').animate({ opacity: 0 }, 0, function () {
                 $(this).animate({ opacity: 1 }, 100);
-                $('#text').text(randomQuote.text);
+                $('#text').text(quote);
             });
 
             $('#author').animate({ opacity: 0 }, 0, function () {
                 $(this).animate({ opacity: 1 }, 150);
-                $('#author').text(randomQuote.author);
+                $('#author').text(author);
             });
 
             $('#new-quote').removeAttr("disabled");
