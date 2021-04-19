@@ -97,8 +97,6 @@
                 $(this).animate({ opacity: 1 }, 150);
                 $('#author').text(author);
             });
-
-            $('#new-quote').removeAttr("disabled");
         }
 
         // change background and quote when next quote is clicked
@@ -112,9 +110,11 @@
             }
 
             $('#new-quote').on('click', function() {
-                $('body').css('background-image', `linear-gradient(to bottom, rgba(223, 216, 216, 0.25) 0%,rgba(236, 226, 226, 0.25) 100%), url("./background/${backgroundNumber}.jpeg")`).fadeIn(2000);
+                $('body').css('background-image', `linear-gradient(to bottom, rgba(223, 216, 216, 0.25) 0%,rgba(236, 226, 226, 0.25) 100%), url("./background/${backgroundNumber}.jpeg")`);
                 decreaseFont();                 
             })
+
+            $('#new-quote').removeAttr("disabled");
         };
 
         // decrease font size if the text is long
