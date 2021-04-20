@@ -88,15 +88,9 @@
                 `https://www.facebook.com/dialog/feed?app_id=140586622674265&link=https%3A%2F%2Fv-quote-machine.netlify.app%2F&quote=${quote}%0D%0A${author}&redirect_uri=http%3A%2F%2Fs7.addthis.com%2Fstatic%2Fpostshare%2Fc00.html`
             );
 
-            $('#text').animate({ opacity: 0 }, 0, function () {
-                $(this).animate({ opacity: 1 }, 100);
-                $('#text').text(quote);
-            });
+            $('#text').text(quote);
 
-            $('#author').animate({ opacity: 0 }, 0, function () {
-                $(this).animate({ opacity: 1 }, 150);
-                $('#author').text(author);
-            });
+            $('#author').text(author);
         }
 
         // change background and quote when next quote is clicked
@@ -149,6 +143,46 @@
 
             $('#new-quote').on('click', getQuote);
             $('#new-quote').on('click', next);
+
+            // load background images
+
+            var bCheckEnabled = true;
+            var bFinishCheck = false;
+
+            var img;
+            var imgArray = new Array();
+            var i = 0;
+
+            var myInterval = setInterval(loadImage, 1);
+
+            function loadImage() {
+
+                if (bFinishCheck) {
+                    clearInterval(myInterval);
+                    alert('Loaded ' + i + ' image(s)!)');
+                    return;
+                }
+
+                if (bCheckEnabled) {
+
+                    bCheckEnabled = false;
+
+                    img = new Image();
+                    img.onload = fExists;
+                    img.onerror = fDoesntExist;
+                    img.src = './background/' + i + '.jpeg';
+                }
+            }
+
+            function fExists() {
+                imgArray.push(img);
+                i++;
+                bCheckEnabled = true;
+            }
+
+            function fDoesntExist() {
+                bFinishCheck = true;
+            }
         });
     </script>
 </body>
