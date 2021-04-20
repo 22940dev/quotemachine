@@ -70,6 +70,7 @@
         }
 
         function getQuote() {
+
             var randomQuote = getRandomQuote();
 
             quote = '" ' + randomQuote.text + ' "';
@@ -104,6 +105,7 @@
             }
 
             $('#new-quote').on('click', function() {
+                $('html').css('background-image', `linear-gradient(to bottom, rgba(223, 216, 216, 0.25) 0%,rgba(236, 226, 226, 0.25) 100%), url("./background/${backgroundNumber}.jpeg")`);
                 $('body').css('background-image', `linear-gradient(to bottom, rgba(223, 216, 216, 0.25) 0%,rgba(236, 226, 226, 0.25) 100%), url("./background/${backgroundNumber}.jpeg")`);
                 decreaseFont();                 
             })
@@ -127,7 +129,7 @@
             });
         };
 
-        // disable button while it is waiting for the next quote
+        // disable button while it is waiting for the next quote and background image
 
         $('#new-quote').on('click',function(){
             $('#new-quote').attr("disabled","disabled");
@@ -143,46 +145,6 @@
 
             $('#new-quote').on('click', getQuote);
             $('#new-quote').on('click', next);
-
-            // load background images
-
-            var bCheckEnabled = true;
-            var bFinishCheck = false;
-
-            var img;
-            var imgArray = new Array();
-            var i = 0;
-
-            var myInterval = setInterval(loadImage, 1);
-
-            function loadImage() {
-
-                if (bFinishCheck) {
-                    clearInterval(myInterval);
-                    alert('Loaded ' + i + ' image(s)!)');
-                    return;
-                }
-
-                if (bCheckEnabled) {
-
-                    bCheckEnabled = false;
-
-                    img = new Image();
-                    img.onload = fExists;
-                    img.onerror = fDoesntExist;
-                    img.src = './background/' + i + '.jpeg';
-                }
-            }
-
-            function fExists() {
-                imgArray.push(img);
-                i++;
-                bCheckEnabled = true;
-            }
-
-            function fDoesntExist() {
-                bFinishCheck = true;
-            }
         });
     </script>
 </body>

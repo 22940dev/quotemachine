@@ -11,7 +11,7 @@ html {
     height: 100%;
     padding: 0;
     margin: 0;
-    background-color: rgba(35, 83, 214, 0.795);
+    background-color: linear-gradient(to bottom, rgba(223, 216, 216, 0.25) 0%,rgba(236, 226, 226, 0.25) 100%), url("./background/0.jpeg");
 }
 
 body {
