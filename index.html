@@ -89,9 +89,9 @@
                 `https://www.facebook.com/dialog/feed?app_id=140586622674265&link=https%3A%2F%2Fv-quote-machine.netlify.app%2F&quote=${quote}%0D%0A${author}&redirect_uri=http%3A%2F%2Fs7.addthis.com%2Fstatic%2Fpostshare%2Fc00.html`
             );
 
-            $('#text').text(quote);
+            $('#text').fadeOut(0).fadeIn(500).text(quote);
 
-            $('#author').text(author);
+            $('#author').fadeOut(0).fadeIn(500).text(author);
 
             $('#new-quote').removeAttr("disabled");
         }
