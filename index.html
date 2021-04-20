@@ -92,11 +92,15 @@
             $('#text').text(quote);
 
             $('#author').text(author);
+
+            $('#new-quote').removeAttr("disabled");
         }
 
         // change background and quote when next quote is clicked
 
         function next() {
+
+            $('body').animate({ opacity: 0 }, 100).animate({ opacity: 1 }, 2000);
 
             let backgroundNumber = getRandomBackgroundNumber();
 
@@ -105,12 +109,9 @@
             }
 
             $('#new-quote').on('click', function() {
-                $('html').css('background-image', `linear-gradient(to bottom, rgba(223, 216, 216, 0.25) 0%,rgba(236, 226, 226, 0.25) 100%), url("./background/${backgroundNumber}.jpeg")`);
                 $('body').css('background-image', `linear-gradient(to bottom, rgba(223, 216, 216, 0.25) 0%,rgba(236, 226, 226, 0.25) 100%), url("./background/${backgroundNumber}.jpeg")`);
                 decreaseFont();                 
             })
-
-            $('#new-quote').removeAttr("disabled");
         };
 
         // decrease font size if the text is long
@@ -129,7 +130,7 @@
             });
         };
 
-        // disable button while it is waiting for the next quote and background image
+        // disable button while it is waiting for the next quote
 
         $('#new-quote').on('click',function(){
             $('#new-quote').attr("disabled","disabled");
